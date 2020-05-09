@@ -1,0 +1,31 @@
+package premChand;
+
+import java.util.Arrays;
+
+public class PE2 {
+	
+	String[] cache;
+	String[] main_memory;
+	
+	PE2 () {
+		this.cache = new String[4];
+		this.main_memory = new String[32];
+	}
+	
+	public String inputter() {
+		int[] filler = new int[7];
+		for(int y=0; y<7; y++) {
+			filler[y] = ((int) Math.random() * 85)%2;
+		}
+		return Arrays.toString(filler);
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("Assuming 128 bytes as the size of main_memory...");
+		System.out.println("Assuming 16 bytes as the size of cache_memory...");
+		PE2 computer = new PE2();
+		
+		
+	}
+
+}

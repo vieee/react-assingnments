@@ -1,0 +1,57 @@
+package premChand;
+
+import java.util.*;
+class Oso {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int numRow = sc.nextInt();
+		int maxHeight = sc.nextInt();
+		int instruction, position = 0;
+		boolean flag = false;
+		int initHeight[] = new int[numRow];
+		for(int y=0; y<numRow; y++) {
+			initHeight[y] = sc.nextInt();
+		}
+		
+		while(true) {
+			instruction = sc.nextInt();
+			switch(instruction) {
+				case 1: 
+					if(instruction != 0) {
+						position -= 1;
+					}
+					break;
+				case 2:
+					if(instruction != (numRow - 1)) {
+						position += 1;
+					}
+					break;
+				case 3:
+					if(initHeight[position] > 0 && flag == false) {
+						initHeight[position] --;
+						flag = true;
+					}
+					break;
+				case 4:
+					if(initHeight[position] < maxHeight && flag == true) {
+						initHeight[position] ++;
+						flag = false;
+					}
+				default:
+					break;
+			}
+			if(instruction == 0) {
+				break;
+			}
+
+		}
+		for(int y=0; y<numRow; y++) {
+			System.out.print(initHeight[y] + " ");
+		}
+		sc.close();
+		
+	
+	}
+
+}

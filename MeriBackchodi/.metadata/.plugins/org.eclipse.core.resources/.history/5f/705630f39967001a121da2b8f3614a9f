@@ -1,0 +1,52 @@
+package premChand;
+
+import java.util.*;
+class Gates {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int testCase = sc.nextInt();
+		int N, K;
+		int numHeads = 0;
+		int numTails = 0;
+		boolean swap = false;
+		int test;
+		Stack<Integer> array;
+		char sweep;
+		for(int i=0; i<testCase; i++) {
+			N = sc.nextInt();
+			K = sc.nextInt();
+			array = new Stack<Integer>();
+			for(int j=0; j<N; j++) {
+				sweep = sc.next().charAt(0);
+				if(sweep == "H".charAt(0)) {
+					array.push(0);
+					numHeads ++;
+				}
+				else {
+					array.push(1);
+					numTails ++;
+				}
+			}
+			while (K > 0) {
+				test = array.pop();
+				if((test == 1 && swap == false) || (test == 0 && swap == true)) {
+					numTails --;
+				}
+				else {
+					numHeads --;
+					test = numHeads;
+					numHeads = numTails;
+					numTails = test;
+					swap = (swap == true) ? false : true; 
+				}
+				K --;
+			}
+			System.out.println(numHeads);
+		}
+		sc.close();
+
+	}
+
+}

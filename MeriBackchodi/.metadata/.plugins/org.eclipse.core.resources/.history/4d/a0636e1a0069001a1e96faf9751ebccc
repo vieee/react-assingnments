@@ -1,0 +1,52 @@
+package premChand;
+
+import java.util.*;
+class Gates {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		int nP = sc.nextInt();
+		int nR = sc.nextInt();
+		int[][] Allocation = new int[nP][nR];
+		int[][] MaxNeed = new int[nP][nR];
+		int[][] Available = new int[nP][nR];
+		int[][] RemainingNeed = new int[nP][nR];
+		int[] total = new int[nR];
+		int[] full = new int[nR];
+		
+		System.out.println("Enter the total available resources..:-");
+		for(int i = 0; i<nR; i++) {
+			total[i] = sc.nextInt();
+		}
+		System.out.println("Enter the total allocation required for the processes..:-");
+		for(int i = 0; i<nP; i++) {
+			System.out.println("For process " + (i+1));
+			for(int j=0; j<nR; j++) {
+				Allocation[i][j] = sc.nextInt();				
+			}
+		}
+		System.out.println("Enter the maximum need of resources required for the processes..:-");
+		for(int i = 0; i<nP; i++) {
+			System.out.println("For process " + (i+1));
+			for(int j=0; j<nR; j++) {
+				MaxNeed[i][j] = sc.nextInt();				
+			}
+		}
+		sc.close();
+		for(int i = 0; i<nP; i++) {
+			for(int j=0; j<nR; j++) {
+				RemainingNeed[i][j] = MaxNeed[i][j] - Allocation[i][j];
+				full[j] += Allocation[i][j];
+			}
+		}
+		for(int i =0; i<nR; i++) {
+			Available[0][i] = total[i] - full[i];
+		}
+		
+		
+
+
+	}
+
+}
